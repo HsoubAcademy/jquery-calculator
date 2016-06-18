@@ -1,0 +1,58 @@
+#calculator {
+  direction: ltr;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#output-container {
+  flex-basis: 100%;
+  display: flex;
+}
+
+input {
+  flex-basis: 100%;
+}
+
+#reset {
+  flex-shrink: 0;
+}
+
+#numbers {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-basis: 75%;
+  flex-grow: 1;
+}
+
+#operators {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+input, button {
+  height: 50px;
+  margin: 3px;
+  font-size: larger;
+}
+
+button {
+  width: 50px;
+  border: 1px solid brown;
+  background-color: #FFe900;
+}
+
+#numbers button {
+  flex-basis: calc(33% - 6px);
+}
+
+#calculate, #dot, #zero {
+  order: -1;
+}
+
+#calculate {
+  font-weight: bold;
+  background-color: lightblue;
+  border-color: darkblue;
+}
