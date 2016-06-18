@@ -1,10 +1,11 @@
 $(document).ready(function() {
-  var operator = null;
-  var firstOperand = null;
-  var secondOperand = null;
-  var isPending = false;
+  var firstOperand = null; // الطّرف الأوّل من العمليّة
+  var operator = null; // العامل الرّياضي بين الطّرفين: جمع أم طرح... إلخ.
+  var secondOperand = null; // الطرف الثّاني من العملية
+  var isPending = false; // هل العملية جارية؟ أم أننا بدأنا عملية حسابية جديدة؟
 
   function calculate() {
+    // حول العبارات النّصيّة إلى أرقام
     firstOperand = Number(firstOperand);
     secondOperand = Number(secondOperand);
     if (operator === '+') {
@@ -18,6 +19,7 @@ $(document).ready(function() {
     }
   }
 
+  // صفر الآلة الحاسبة بإعادة حالتها إلى ما كانت عليه في البداية
   function resetCalculator() {
     firstOperand = null;
     secondOperand = null;
@@ -26,10 +28,12 @@ $(document).ready(function() {
   }
 
   $('#calculate').click(function() {
-    if (operator && firstOperand && secondOperand) {
-      var result = calculate();
-      $('input').val(result);
-      resetCalculator();
+    // لا تقم بالحساب إلّا إذا كانت كلّ مكونات العمليّة قد أدخلت
+    if (operator !== null && firstOperand !== null && secondOperand !== null) {
+      var result = calculate(); 
+      $('input').val(result); // اعرض نتيجة العملية في حقل الإدخال
+      resetCalculator(); // صفر الآلة الحاسبة
+      // اعتبر ناتج العمليّة الحالية هو الطّرف الأول للعمليّة القادمة
       firstOperand = result;
       isPending = true;
     }
@@ -37,7 +41,7 @@ $(document).ready(function() {
 
   $('#reset').click(function() {
     resetCalculator();
-    $('input').val('');
+    $('input').val(''); // اجعل قيمة حقل الإدخال فارغة
   });
 
   $('#numbers button:not(#calculate)').each(function() {
@@ -65,13 +69,14 @@ $(document).ready(function() {
           // المستخدم يتابع إدخال الأرقام في الطّرف الثّاني
           secondOperand = secondOperand + value;
         }
+        // اجعل قيمة حقل الإدخال مساوية للطّرف الثّاني 
         $('input').val(secondOperand);
       }
     });
   });
 
   $('#operators button').click(function() {
-    operator = $(this).text();
+    operator = $(this).text(); // +  -  × ÷
     isPending = true;
   });
 });
