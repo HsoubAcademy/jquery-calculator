@@ -8,6 +8,8 @@ $(document).ready(function() {
     // حول العبارات النّصيّة إلى أرقام
     firstOperand = Number(firstOperand);
     secondOperand = Number(secondOperand);
+
+    // ثم نفذ العملية بحسب العامل الرياضي
     if (operator === '+') {
       return firstOperand + secondOperand;
     } else if (operator === '-') {
