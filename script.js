@@ -35,7 +35,6 @@ $(document).ready(function() {
       resetCalculator(); // صفر الآلة الحاسبة
       // اعتبر ناتج العمليّة الحالية هو الطّرف الأول للعمليّة القادمة
       firstOperand = result;
-      isPending = true;
     }
   });
 
@@ -56,6 +55,7 @@ $(document).ready(function() {
         } else {
           // هذه هي المرّة الأولى الّتي يبدأ فيها المُستخدم بكتابة رقم
           firstOperand = value;
+          // الآن أصبحت العمليّة جارية
           isPending = true;
         }
         // اجعل قيمة حقل الإدخال مساوية للعدد الجديد
