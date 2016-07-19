@@ -45,7 +45,7 @@ $(document).ready(function() {
     $('input').val(''); // اجعل قيمة حقل الإدخال فارغة
   });
 
-  $('#numbers button:not(#calculate)').each(function() {
+  $('#numbers > button:not(#calculate)').each(function() {
     var $btn = $(this);
     var value = $btn.text();
     $btn.click(function() {
@@ -77,7 +77,7 @@ $(document).ready(function() {
     });
   });
 
-  $('#operators button').click(function() {
+  $('#operators > button').click(function() {
     operator = $(this).text(); // +  -  × ÷
     isPending = true;
   });
