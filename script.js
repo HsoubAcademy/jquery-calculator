@@ -45,36 +45,33 @@ $(document).ready(function() {
     $('input').val(''); // اجعل قيمة حقل الإدخال فارغة
   });
 
-  $('#numbers > button:not(#calculate)').each(function() {
-    var $btn = $(this);
-    var value = $btn.text();
-    $btn.click(function() {
-      if (operator === null) {
-        // في الطرف الأول من العملية
-        if (isPending && firstOperand !== null) {
-          // المستخدم يتابع إدخال الأرقام في الطّرف الأول
-          firstOperand = firstOperand + value;
-        } else {
-          // هذه هي المرّة الأولى الّتي يبدأ فيها المُستخدم بكتابة رقم
-          firstOperand = value;
-          // الآن أصبحت العمليّة جارية
-          isPending = true;
-        }
-        // اجعل قيمة حقل الإدخال مساوية للعدد الجديد
-        $('input').val(firstOperand);
+  $('#numbers > button:not(#calculate)').click(function() {
+    var value = $(this).text();
+    if (operator === null) {
+      // في الطرف الأول من العملية
+      if (isPending === true && firstOperand !== null) {
+        // المستخدم يتابع إدخال الأرقام في الطّرف الأول
+        firstOperand = firstOperand + value;
       } else {
-        // في الطرف الثاني من العملية
-        if (secondOperand === null) {
-          // هذه هي المرّة الأولى الّتي يبدأ فيها المستخدم بكتابة رقم في الطّرف الثّاني
-          secondOperand = value;
-        } else {
-          // المستخدم يتابع إدخال الأرقام في الطّرف الثّاني
-          secondOperand = secondOperand + value;
-        }
-        // اجعل قيمة حقل الإدخال مساوية للطّرف الثّاني 
-        $('input').val(secondOperand);
+        // هذه هي المرّة الأولى الّتي يبدأ فيها المُستخدم بكتابة رقم
+        firstOperand = value;
+        // الآن أصبحت العمليّة جارية
+        isPending = true;
       }
-    });
+      // اجعل قيمة حقل الإدخال مساوية للعدد الجديد
+      $('input').val(firstOperand);
+    } else {
+      // في الطرف الثاني من العملية
+      if (secondOperand === null) {
+        // هذه هي المرّة الأولى الّتي يبدأ فيها المستخدم بكتابة رقم في الطّرف الثّاني
+        secondOperand = value;
+      } else {
+        // المستخدم يتابع إدخال الأرقام في الطّرف الثّاني
+        secondOperand = secondOperand + value;
+      }
+      // اجعل قيمة حقل الإدخال مساوية للطّرف الثّاني 
+      $('input').val(secondOperand);
+    }
   });
 
   $('#operators > button').click(function() {
