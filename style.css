@@ -43,6 +43,16 @@ button {
   background-color: #FFe900;
 }
 
+button:hover {
+  background-color: sandybrown;
+  color: white;
+}
+
+#calculate:hover {
+  background-color: darkblue;
+}
+
+
 #numbers button {
   flex-basis: calc(33% - 6px);
 }
